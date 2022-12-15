@@ -13,11 +13,11 @@ def iap_jsonrpc(url, method='call', params=None, timeout=15):
     result=[]
     if params and params.get('messages', False):
         for p in params.get('messages'):
-            url = "https://svr22.synermaxx.asia/vmobile/suysing/api/sendnow.php?username=%s&password=%s&mobilenum=%s&fullmesg=%s&originator=%s" %(
+            url = "https://svr22.synermaxx.asia/vmobile/suysing/api/sendnow.php?username=%s&password=%s&mobilenum=%s&originator=%s&fullmesg=%s" %(
                 user, password,
                 p.get('number',False),
-                p.get('content',False),
-                originator)
+                originator,
+                p.get('content',False))
             response = requests.get(url)
             if not response.text.split('|')[0].endswith('NACK'):
                 result.append({'state': 'success', 'credit': 0, 'res_id': p.get('res_id', False)})
