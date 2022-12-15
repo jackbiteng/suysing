@@ -19,7 +19,7 @@ def iap_jsonrpc(url, method='call', params=None, timeout=15):
                 p.get('content',False),
                 originator)
             response = requests.get(url)
-            if response.status_code == 200:
+            if not response.text.split('|')[0].endswith('NACK'):
                 result.append({'state': 'success', 'credit': 0, 'res_id': p.get('res_id', False)})
             else:
                 result.append({'state': 'unregistered', 'credit': 0, 'res_id': p.get('res_id', False)})
