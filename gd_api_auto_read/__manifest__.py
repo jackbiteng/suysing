@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 {
     'name' : 'Google Drive API Integration',
-    'version' : '15.0.4',
+    'version' : '15.0.2',
     'summary': 'Read Google Drive Files using API',
     'sequence': 100,
     'description': """
