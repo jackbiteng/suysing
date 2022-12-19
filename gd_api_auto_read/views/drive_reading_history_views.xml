@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+<odoo>
+    <!-- Form View -->
+    <record id="drive_reading_history_view_form" model="ir.ui.view">
+        <field name="name">drive.reading.history.view.form</field>
+        <field name="model">drive.reading.history</field>
+        <field name="arch" type="xml">
+            <form string="Service Reading History">
+                <sheet>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1>
+                            <field name="name" placeholder="e.g. Service Config"/>
+                        </h1>
+                    </div>
+                    <notebook>
+                        <page name="error_desc" string="Description">
+                            <field name="description" />    
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <!-- Tree View -->
+    <record id="drive_reading_history_view_tree" model="ir.ui.view">
+        <field name="name">drive.reading.history.view.tree</field>
+        <field name="model">drive.reading.history</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="create_date" />
+                <field name="has_error" optional="hide" />
+                <field name="description" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <!-- Search View -->
+    <record id="drive_reading_history_view_search" model="ir.ui.view">
+        <field name="name">drive.reading.history.view.search</field>
+        <field name="model">drive.reading.history</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="description" />
+                <field name="has_error" />
+                <filter string="Is Error" name="has_error" domain="[('has_error', '=', True)]"/>
+            </search>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_reading_history_config" model="ir.actions.act_window">
+        <field name="name">Drive Reading History</field>
+        <field name="res_model">drive.reading.history</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help">See Drive Reading History</field>
+    </record>
+
+    <!-- Menu -->
+
+    <menuitem
+        id="crm_menu_google_drive_integration"
+        name="Google Drive Integration"
+        parent="crm.crm_menu_config"
+        sequence="100"/>
+
+    <menuitem id="menu_reading_history_config"
+        name="Drive Reading History"
+        parent="gd_api_auto_read.crm_menu_google_drive_integration"
+        sequence="2"
+        action="action_reading_history_config"/>
+
+
+</odoo>

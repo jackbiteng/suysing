@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <record id="group_use_google_drive_auto_read" model="res.groups">
+            <field name="name">Google Drive: Read Leads</field>
+            <field name="comment">Read Leads CSV Files from Give Folder ID of Google Drive</field>
+            <field name="category_id" ref="base.module_category_hidden"/>
+        </record>
+    </data>
+</odoo>
